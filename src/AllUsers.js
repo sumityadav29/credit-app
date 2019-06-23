@@ -1,5 +1,7 @@
 import firebase from './firebase.js';
 import React from 'react';
+import GoBack from './GoBack.js';
+import HomePage from './HomePage.js';
 
 class AllUsers extends React.Component {
     constructor(props){
@@ -30,7 +32,9 @@ class AllUsers extends React.Component {
 
     render() {
         return (
+            <>
             <table>
+            <caption>All Users</caption>
             <thead>
               <td>Name</td>
               <td>Email</td>
@@ -50,6 +54,10 @@ class AllUsers extends React.Component {
             }
             </tbody>
           </table>
+          <GoBack
+          goBack = {() => {this.props.goBack(<HomePage/>)}}
+          />
+          </>
         );
     }
 }

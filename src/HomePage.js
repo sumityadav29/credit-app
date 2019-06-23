@@ -5,7 +5,7 @@ class HomePage extends React.Component {
     render() {
         return (
             <>
-            <button onClick = {() => this.props.onClick(<AllUsers/>)}>All Users</button>
+            <button onClick = {() => this.props.onClick(<AllUsers goBack = {() => {this.props.goBack()}}/>)}>All Users</button>
             <button>Transactions</button>
             </>
         );

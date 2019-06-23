@@ -6,13 +6,25 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      content : <HomePage onClick = {(page) => {this.handlePageRequest(page)}}/>,
+      content : <HomePage 
+                onClick = {(page) => {this.handlePageRequest(page)}}
+                goBack = {() => {this.handleGoingBack()}}
+                />,
+      history: [],
     }
   }
 
   handlePageRequest(page) {
     this.setState({
       content: page,
+      history: this.state.history.concat(this.state.content),
+    });
+  }
+
+  handleGoingBack(){
+    this.setState({
+      content: this.state.history.pop(),
+      history: this.state.history,
     });
   }
 
