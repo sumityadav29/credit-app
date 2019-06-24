@@ -52,32 +52,40 @@ class AllUsers extends React.Component {
                     <td>{user.credits}</td>
                     <td>
                       <button 
-                      onClick = {() => {this.props.onClick(<User 
-                                                            uid = {user.uid} 
-                                                            goBack = {() => {
-                                                                              this.props.goBack()
-                                                                            }
-                                                                      }
-                                                            />
-                                                          )
-                                        }
-                                }
-                      >
-                        View
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })
-            }
-            </tbody>
-          </table>
-          <GoBack
-          goBack = {() => {this.props.goBack()}}
-          />
-          </>
-        );
-    }
-}
+                      onClick = {
+                        () => {
+                          this.props.onClick(<User 
+                                              uid = {user.uid} 
+                                              goBack = {
+                                                () => {
+                                                  this.props.goBack()
+                                                }
+                                              }
+                                              onClick = {
+                                                (page) => {
+                                                  this.props.onClick(page)
+                                                }
+                                              }
+                                              />
+                                            )
+                          }
+                        }
+                        >
+                          View
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })
+              }
+              </tbody>
+            </table>
+            <GoBack
+            goBack = {() => {this.props.goBack()}}
+            />
+            </>
+          );
+      }
+  }
 
 export default AllUsers;

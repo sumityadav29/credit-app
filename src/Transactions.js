@@ -2,8 +2,6 @@ import React from 'react';
 import firebase from './firebase.js';
 import GoBack from './GoBack.js';
 
-/* eslint-disable no-unused-expressions */
-
 class Transactions extends React.Component {
     constructor(props){
         super(props);
