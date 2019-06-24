@@ -7,25 +7,25 @@ class AllUsers extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-          items: [],
+          users: [],
         };
       }
     
       componentDidMount() {
-        const itemsRef = firebase.database().ref('users');
+        const usersRef = firebase.database().ref('users');
         let newState = [];
-        itemsRef.on("value", (snapshot) => {
-          let items = snapshot.val();
-          for (let item in items) {
+        usersRef.on("value", (snapshot) => {
+          let users = snapshot.val();
+          for (let item in users) {
             newState.push({
-              name : items[item].name,
-              email : items[item].email,
-              credits : items[item].credits,
+              name : users[item].name,
+              email : users[item].email,
+              credits : users[item].credits,
               uid : item,
             });
           }
           this.setState({
-            items : newState,
+            users : newState,
           });
         });
       }
@@ -44,13 +44,28 @@ class AllUsers extends React.Component {
             </thead>
             <tbody>
             {
-              this.state.items.map((item) => {
+              this.state.users.map((user) => {
                 return (
                   <tr>
-                    <td>{item.name}</td>
-                    <td>{item.email}</td>
-                    <td>{item.credits}</td>
-                    <td><button onClick = {() => {this.props.onClick(<User uid = {item.uid} goBack = {() => {this.props.goBack()}}/>)}}>View</button></td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.credits}</td>
+                    <td>
+                      <button 
+                      onClick = {() => {this.props.onClick(<User 
+                                                            uid = {user.uid} 
+                                                            goBack = {() => {
+                                                                              this.props.goBack()
+                                                                            }
+                                                                      }
+                                                            />
+                                                          )
+                                        }
+                                }
+                      >
+                        View
+                      </button>
+                    </td>
                   </tr>
                 );
               })
