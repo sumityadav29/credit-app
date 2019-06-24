@@ -1,7 +1,7 @@
 import firebase from './firebase.js';
 import React from 'react';
 import GoBack from './GoBack.js';
-import HomePage from './HomePage.js';
+import User from './User.js'
 
 class AllUsers extends React.Component {
     constructor(props){
@@ -13,14 +13,15 @@ class AllUsers extends React.Component {
     
       componentDidMount() {
         const itemsRef = firebase.database().ref('users');
+        let newState = [];
         itemsRef.on("value", (snapshot) => {
           let items = snapshot.val();
-          let newState = [];
           for (let item in items) {
             newState.push({
               name : items[item].name,
               email : items[item].email,
               credits : items[item].credits,
+              uid : item,
             });
           }
           this.setState({
@@ -39,6 +40,7 @@ class AllUsers extends React.Component {
               <td>Name</td>
               <td>Email</td>
               <td>Credits</td>
+              <td>View User</td>
             </thead>
             <tbody>
             {
@@ -48,6 +50,7 @@ class AllUsers extends React.Component {
                     <td>{item.name}</td>
                     <td>{item.email}</td>
                     <td>{item.credits}</td>
+                    <td><button onClick = {() => {this.props.onClick(<User uid = {item.uid} goBack = {() => {this.props.goBack()}}/>)}}>View</button></td>
                   </tr>
                 );
               })
@@ -55,7 +58,7 @@ class AllUsers extends React.Component {
             </tbody>
           </table>
           <GoBack
-          goBack = {() => {this.props.goBack(<HomePage/>)}}
+          goBack = {() => {this.props.goBack()}}
           />
           </>
         );
