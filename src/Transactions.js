@@ -49,9 +49,9 @@ class Transactions extends React.Component {
                         this.state.items.map((item) => {
                             return (
                                 <tr>
-                                    <td>{item.from}</td>
-                                    <td>{item.to}</td>
-                                    <td>{item.credits}</td>
+                                    <td class = 'transdata'>{item.from}</td>
+                                    <td class = 'transdata'>{item.to}</td>
+                                    <td class = 'transdata'>{item.credits}</td>
                                 </tr>
                             );
                         })

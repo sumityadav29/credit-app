@@ -25,6 +25,7 @@ class User extends React.Component{
             <p>{this.state.user.email}</p>
             <p>Credits : {this.state.user.credits}</p>
             <button 
+            class = 'styledbutton'
             onClick = {() => {
                                 this.props.onClick(<Transfer
                                                     uid = {this.props.uid}

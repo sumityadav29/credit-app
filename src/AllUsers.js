@@ -46,10 +46,10 @@ class AllUsers extends React.Component {
               this.state.users.map((user) => {
                 return (
                   <tr>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>{user.credits}</td>
-                    <td>
+                    <td class = 'userdata'>{user.name}</td>
+                    <td class = 'userdata'>{user.email}</td>
+                    <td class = 'userdata'>{user.credits}</td>
+                    <td class = 'userdata'>
                       <button 
                       onClick = {
                         () => {

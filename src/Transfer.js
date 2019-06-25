@@ -26,8 +26,11 @@ class Transfer extends React.Component {
     
     handleSubmit(event) {
         let amount = event.target[1].value;
+        if (amount == 0 || this.state.value == -1){
+            return;
+        }
         this.transferCredit(amount, this.props.uid, this.state.value);
-        event.target[1].value = 0;
+        event.target[1].value = null;
         event.preventDefault();
     }
 
@@ -71,7 +74,7 @@ class Transfer extends React.Component {
     openPopupbox() {
         const content = (
           <div>
-            <p>
+            <p style = {{'color':'green'}}>
                 Your transaction was successful
             </p>
           </div>
@@ -112,8 +115,8 @@ class Transfer extends React.Component {
             <p>{this.email}</p>
             <p>Credits : {this.credits}</p>
             <form onSubmit={this.handleSubmit}>
-                <label>
-                    Select User 
+                <label class = 'formlabels'>
+                    Select User<br/><br/>
                 <select value={this.state.value} onChange={this.handleChange}>
                     <option value = '-1'>Select user to transfer to</option>
                     {
@@ -123,13 +126,15 @@ class Transfer extends React.Component {
                     }
                 </select>
                 </label>
-                <label>
-                    Amount
+                <br/><br/>
+                <label class = 'formlabels'>
+                    Enter Amount<br/><br/>
                     <input type="number" min="0" max={this.credits}/>
                 </label>
-                <input type="submit" value="Transfer" />
+                <PopupboxContainer { ...popupboxConfig } />
+                <br/>
+                <input class = 'styledbutton' type="submit" value="Transfer" />
             </form>
-            <PopupboxContainer { ...popupboxConfig } />
             </>
         );
     }

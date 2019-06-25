@@ -15,6 +15,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  z-index: 1;
 }
 
 header > p {
@@ -45,19 +46,23 @@ button.goback {
   border-radius: 10px;
   border-color: white;
   color: white;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
 }
 
 button.goback:hover {
   background-color: white;
   color: black;
   cursor: pointer;
+  border-color: rgb(67,88,208,0.4);
 }
 
 button:hover {
   cursor: pointer;
 }
 
-button.styledbutton {
+button.styledbutton, input.styledbutton {
+  margin: auto;
   display: block;
   background-color: #36304a;
   border-radius: 10px;
@@ -66,9 +71,11 @@ button.styledbutton {
   border-color: white;
   color: white;
   margin-top: 100px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
 }
 
-button.styledbutton:hover {
+button.styledbutton:hover, input.styledbutton:hover {
   background-color: white;
   color: black;
   border-color: #36304a;
@@ -85,7 +92,7 @@ button.styledbutton:hover {
 h1 {
   margin: 0;
   padding: 20px;
-  color: #747474;
+  color: #5a5a5a;
 }
 
 table {
@@ -111,19 +118,68 @@ td {
   color: white;
 }
 
-tr:hover { 
-  background-color: rgb(235, 235, 235);
+tr:hover,tr:nth-child(even):hover { 
+  background-color: rgb(219, 219, 219);
+  cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
 }
 
 thead {
   font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media 
+only screen and (max-width: 800px){
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+  
+  table {
+    min-width: 100vw;
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead td { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	td.userdata:nth-of-type(1):before { content: "Name"; }
+	td.userdata:nth-of-type(2):before { content: "Email"; }
+	td.userdata:nth-of-type(3):before { content: "Credits"; }
+  td.userdata:nth-of-type(4):before { content: "View"; }
+  
+  td.transdata:nth-of-type(1):before { content: "Name"; }
+  td.transdata:nth-of-type(2):before { content: "Email"; }
+  td.transdata:nth-of-type(3):before { content: "Credits"; }
 }
