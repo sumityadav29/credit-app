@@ -1,6 +1,5 @@
 import React from 'react';
 import firebase from './firebase.js';
-import GoBack from './GoBack.js';
 import {PopupboxManager, PopupboxContainer} from 'react-popupbox';
 
 class Transfer extends React.Component {
@@ -131,9 +130,6 @@ class Transfer extends React.Component {
                 <input type="submit" value="Transfer" />
             </form>
             <PopupboxContainer { ...popupboxConfig } />
-            <GoBack
-            goBack = {() => {this.props.goBack()}}
-            />
             </>
         );
     }

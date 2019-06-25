@@ -2,36 +2,119 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color: #36304a;
   min-height: 15vh;
-  display: flex;
-  flex-direction: column;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+header > p {
+  display: block;
+  float: left;
+  padding-left: 3vw;
+  margin: auto;
+  max-height: 100%;
+  text-align: left;
+  font-size: calc(13px + 2vmin);
+  font-variant: small-caps;
 }
 
-table, td {
-  table-layout: fixed;
-  border: 1px solid black;
-  border-collapse: collapse;
-  padding: 10px;
+.gobackContainer {
+  float: right;
+  min-height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  padding-right: 20px;
 }
+
+button.goback {
+  min-height: 10vh;
+  min-width: 10vw;
+  font-variant: small-caps;
+  background-color: rgb(67,88,208,0.4);
+  border-radius: 10px;
+  border-color: white;
+  color: white;
+}
+
+button.goback:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button.styledbutton {
+  display: block;
+  background-color: #36304a;
+  border-radius: 10px;
+  min-height: 10vh;
+  min-width: 25vw;
+  border-color: white;
+  color: white;
+  margin-top: 100px;
+}
+
+button.styledbutton:hover {
+  background-color: white;
+  color: black;
+  border-color: #36304a;
+}
+
+.maincontainer {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+h1 {
+  margin: 0;
+  padding: 20px;
+  color: #747474;
+}
+
 table {
+  table-layout: fixed;
+  border-collapse:collapse;
+  box-shadow: 1px 1px 10px 2px;
   margin: auto;
+  background-color: white;
 }
+
+table > thead {
+  background-color: #36304a;
+  color: white;
+}
+
+td {
+  padding: 10px;
+  color: #747474;
+  font-variant: normal;
+}
+
+.tableheader > td {
+  color: white;
+}
+
+tr:hover { 
+  background-color: rgb(235, 235, 235);
+}
+
 thead {
   font-weight: bold;
 }

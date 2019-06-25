@@ -1,6 +1,5 @@
 import firebase from './firebase.js';
 import React from 'react';
-import GoBack from './GoBack.js';
 import User from './User.js'
 
 class AllUsers extends React.Component {
@@ -34,9 +33,9 @@ class AllUsers extends React.Component {
     render() {
         return (
             <>
-            <table>
-            <caption>All Users</caption>
-            <thead>
+            <h1>All Users</h1>
+            <table class = 'users'>
+            <thead class = 'tableheader'>
               <td>Name</td>
               <td>Email</td>
               <td>Credits</td>
@@ -56,11 +55,6 @@ class AllUsers extends React.Component {
                         () => {
                           this.props.onClick(<User 
                                               uid = {user.uid} 
-                                              goBack = {
-                                                () => {
-                                                  this.props.goBack()
-                                                }
-                                              }
                                               onClick = {
                                                 (page) => {
                                                   this.props.onClick(page)
@@ -80,9 +74,6 @@ class AllUsers extends React.Component {
               }
               </tbody>
             </table>
-            <GoBack
-            goBack = {() => {this.props.goBack()}}
-            />
             </>
           );
       }

@@ -1,6 +1,5 @@
 import React from 'react';
 import firebase from './firebase.js';
-import GoBack from './GoBack.js';
 
 class Transactions extends React.Component {
     constructor(props){
@@ -38,9 +37,9 @@ class Transactions extends React.Component {
     render(){
         return(
             <>
-            <table>
-                <caption>All Transactions</caption>
-                <thead>
+            <h1>All Transactions</h1>
+            <table class = 'transactions'>
+                <thead class = 'tableheader'>
                     <td>From</td>
                     <td>To</td>
                     <td>Credits</td>
@@ -59,9 +58,6 @@ class Transactions extends React.Component {
                     }
                 </tbody>
             </table>
-            <GoBack
-            goBack = {() => {this.props.goBack()}}
-            />
             </>
         );
     }

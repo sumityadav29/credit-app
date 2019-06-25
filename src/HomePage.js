@@ -6,9 +6,9 @@ class HomePage extends React.Component {
     render() {
         return (
             <>
-            <button 
+            <button
+            class = 'styledbutton'
             onClick = {() => this.props.onClick(<AllUsers 
-                                                goBack = {() => {this.props.goBack()}}
                                                 onClick = {(page) => {this.props.onClick(page)}}
                                                 />)
                         }
@@ -16,9 +16,8 @@ class HomePage extends React.Component {
                 Show All Users
             </button>
             <button
-            onClick = {() => this.props.onClick(<Transactions 
-                                                goBack = {() => {this.props.goBack()}} 
-                                                />)
+            class = 'styledbutton'
+            onClick = {() => this.props.onClick(<Transactions/>)
                         }
             >
                 Show All Transactions

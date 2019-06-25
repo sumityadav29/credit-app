@@ -1,6 +1,5 @@
 import React from 'react';
 import firebase from './firebase.js';
-import GoBack from './GoBack.js';
 import Transfer from './Transfer.js';
 
 class User extends React.Component{
@@ -29,7 +28,6 @@ class User extends React.Component{
             onClick = {() => {
                                 this.props.onClick(<Transfer
                                                     uid = {this.props.uid}
-                                                    goBack = {() => this.props.goBack()}
                                                     />
                                                 )
                             }
@@ -37,9 +35,6 @@ class User extends React.Component{
             >
                 Transfer Credits
             </button>
-            <GoBack
-            goBack = {() => {this.props.goBack()}}
-            />
             </>
         );
     }

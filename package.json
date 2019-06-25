@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "firebase": "^6.2.1",
+    "firebase": "^6.2.3",
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-popupbox": "^2.0.8",
-    "react-pure-modal": "^1.5.1",
     "react-scripts": "3.0.1"
   },
   "scripts": {
