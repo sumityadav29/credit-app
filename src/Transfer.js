@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from './firebase.js';
 import GoBack from './GoBack.js';
+import {PopupboxManager, PopupboxContainer} from 'react-popupbox';
 
 class Transfer extends React.Component {
     constructor(props) {
@@ -27,6 +28,7 @@ class Transfer extends React.Component {
     handleSubmit(event) {
         let amount = event.target[1].value;
         this.transferCredit(amount, this.props.uid, this.state.value);
+        event.target[1].value = 0;
         event.preventDefault();
     }
 
@@ -64,7 +66,19 @@ class Transfer extends React.Component {
                 credits: Number(amount),
             }
         );
+        this.openPopupbox();
     }
+
+    openPopupbox() {
+        const content = (
+          <div>
+            <p>
+                Your transaction was successful
+            </p>
+          </div>
+        )
+        PopupboxManager.open({ content })
+      }
 
     componentDidMount() {
         const usersRef = firebase.database().ref('users');
@@ -88,6 +102,11 @@ class Transfer extends React.Component {
     }
     
     render() {
+        const popupboxConfig = {
+            fadeIn: true,
+            fadeInSpeed: 500
+        }
+
         return (
             <>
             <h1>{this.name}</h1>
@@ -111,6 +130,7 @@ class Transfer extends React.Component {
                 </label>
                 <input type="submit" value="Transfer" />
             </form>
+            <PopupboxContainer { ...popupboxConfig } />
             <GoBack
             goBack = {() => {this.props.goBack()}}
             />
