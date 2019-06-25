@@ -3,11 +3,16 @@ import React from 'react';
 class GoBack extends React.Component {
     render() {
         return (
-            <button
-            onClick = {() => {this.props.goBack()}}
-            >
-                Go Back
-            </button>
+            <div class= 'gobackContainer'>
+                <div>
+                    <button
+                    class = 'goback '
+                    onClick = {() => {this.props.goBack()}}
+                    >
+                        &lt;&lt; Back
+                    </button>
+                </div>
+            </div>
         );
     }
 }
