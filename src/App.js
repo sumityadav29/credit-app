@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import HomePage from './HomePage.js';
-import GoBack from './GoBack';
+import GoBack from './GoBack.js';
+import GoHome from './GoHome.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class App extends React.Component {
       history: [],
     }
     this.handleGoingBack.bind(this);
+    this.handleGoHomeRequest.bind(this);
+    this.handlePageRequest.bind(this);
   }
 
   handlePageRequest(page) {
@@ -22,7 +25,7 @@ class App extends React.Component {
     });
   }
 
-  handleGoingBack(){
+  handleGoingBack() {
     if (!this.state.history[0]){
       return;
     }
@@ -32,14 +35,25 @@ class App extends React.Component {
     });
   }
 
+  handleGoHomeRequest() {
+    if (!this.state.history[0]){
+      return;
+    }
+    this.setState({
+      content: this.state.history[0],
+      history: [],
+    });
+  }
+
   render(){
     return (
       <div className="App">
         <header className="App-header">
           <p>Credit <br/>Management <br/>App</p>
+          <GoHome goHome = {() => this.handleGoHomeRequest()}/>
           <GoBack goBack = {() => this.handleGoingBack()}/>
         </header>
-        <main style = {{'backgroundImage': 'linear-gradient(to bottom left, rgba(198,80,192,0.2),rgba(67,88,208,0.2))', 'padding': '100px', 'minHeight': '68vh'}}>
+        <main style = {{'backgroundImage': 'linear-gradient(to bottom left, rgba(198,80,192,0.1),rgba(67,88,208,0.1))', 'paddingTop': '100px','paddingBottom': '100px', 'minHeight': '68vh'}}>
           <div class = 'maincontainer'>
             {this.state.content}
           </div>
